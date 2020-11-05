@@ -1,0 +1,18 @@
+<div class="mb-4">
+  <hr>
+  <h1>🍸 Cocktail Menu 🍸</h1>
+</div>
+<hr>
+<% if @cocktails.any? %>
+  <ul>
+    <% @cocktails.each do |cocktail| %>
+      <li>
+        <%= link_to cocktail.name, cocktail_path(cocktail) %>
+      </li>
+      <% end %>
+  </ul>
+<% else %>
+  <p class="empty-state">You don't have any cocktails yet.<br>
+  Let's get the party started:</p>
+<% end %>
+<%= link_to 'Add Cocktail', new_cocktail_path, class: 'btn btn btn-warning' %>
