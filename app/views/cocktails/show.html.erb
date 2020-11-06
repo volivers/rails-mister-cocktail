@@ -9,8 +9,8 @@
 <% end %>
 
 <div class="m-4 text-center">
-  <% if @cocktail.photo %>
-    <%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
+  <% if @cocktail.photo.attached? %>
+    <%= cl_image_tag @cocktail.photo.key, height: 300, width: 400, crop: :fill %>
   <% end %>
     <h2><%= @cocktail.name %>🍹</h2>
 </div>
