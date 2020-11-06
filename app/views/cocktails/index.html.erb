@@ -1,18 +1,19 @@
-<div class="mb-4">
-  <hr>
-  <h1>🍸 Cocktail Menu 🍸</h1>
+<div class="m-4 text-center">
+  <h2>Menu</h2>
 </div>
-<hr>
-<% if @cocktails.any? %>
-  <ul>
-    <% @cocktails.each do |cocktail| %>
-      <li>
-        <%= link_to cocktail.name, cocktail_path(cocktail) %>
-      </li>
-      <% end %>
-  </ul>
-<% else %>
-  <p class="empty-state">You don't have any cocktails yet.<br>
-  Let's get the party started:</p>
-<% end %>
-<%= link_to 'Add Cocktail', new_cocktail_path, class: 'btn btn btn-warning' %>
+
+<div class="ml-4 mr-4">
+  <% if @cocktails.any? %>
+    <ul>
+      <% @cocktails.each do |cocktail| %>
+        <li>
+          <%= cl_image_tag cocktail.photo, height: 300, width: 400, crop: :fill %>
+          <%= link_to cocktail.name, cocktail_path(cocktail) %>
+        </li>
+        <% end %>
+    </ul>
+  <% else %>
+    <p class="empty-state text-center">You don't have any cocktails yet.<br>
+    🎉 Let's get the party started 🎉</p>
+  <% end %>
+</div>

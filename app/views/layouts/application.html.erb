@@ -11,6 +11,12 @@
   </head>
 
   <body>
+  <nav class="navbar navbar-light bg-light">
+    <strong><%= link_to 'Mr. Cocktail 🍸', cocktails_path, class: 'navbar-brand ml-4' %></strong>
+    <%= link_to new_cocktail_path, class: 'btn btn btn-outline-primary mr-4' do %>
+        <i class="fa fa-plus mr-2"></i> Add cocktail
+  <% end %>
+  </nav>
     <%= yield %>
   </body>
 </html>
