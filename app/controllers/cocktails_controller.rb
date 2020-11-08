@@ -16,7 +16,7 @@ class CocktailsController < ApplicationController
     @cocktail = Cocktail.new(cocktail_params)
 
     if @cocktail.save
-      redirect_to @cocktail, notice: 'Cocktail added!'
+      redirect_to @cocktail, notice: 'Recipe added successfully.'
     else
       render :new
     end

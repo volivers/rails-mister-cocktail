@@ -1,14 +1,14 @@
 <div class="m-4 text-center">
-  <h2>New cocktail</h2>
+  <h2>New recipe</h2>
 </div>
 
 <div class="ml-4 mr-4">
   <%= simple_form_for @cocktail do |f| %>
     <%= f.input :name, input_html: { autocomplete: 'off' } %>
     <%= f.input :photo, as: :file %>
-    <div class="text-center">
+    <div class="text-center mt-4 py-4">
+      <%= link_to 'Back', cocktails_path, class: 'btn btn-outline-secondary mr-2' %>
       <%= f.submit class: 'btn btn-primary' %>
-      <%= link_to 'Back', cocktails_path, class: 'btn btn-outline-danger' %>
     </div>
   <% end %>
 </div>

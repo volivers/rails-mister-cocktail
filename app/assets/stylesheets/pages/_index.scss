@@ -1,2 +1,11 @@
 // Import page-specific CSS files here.
 @import "home";
+
+#cocktails-list {
+  display: flex;
+  justify-content: space-between;
+}
+
+#cocktail-badges {
+  margin-right: 30px;
+}

@@ -11,3 +11,35 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "pages/show";
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100%;
+}
+
+.banner {
+  margin: 0;
+  padding: 0;
+  height: 80vh;
+  width: 100%;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url('https://res.cloudinary.com/djlmbrvcx/image/upload/v1604864975/background_pattern_scale_p8au9g.png');
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.round-container {
+  height: 600px;
+  width: 600px;
+  background-color: $white;
+  color: $beta;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

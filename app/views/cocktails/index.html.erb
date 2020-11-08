@@ -1,21 +1,19 @@
-<div class="m-4 text-center">
-  <h2>Menu</h2>
-</div>
 
-<div class="ml-4 mr-4">
-  <% if @cocktails.any? %>
-    <ul>
-      <% @cocktails.each do |cocktail| %>
-        <li>
-          <% if cocktail.photo.attached? %>
-            <%= cl_image_tag cocktail.photo.key, height: 300, width: 400, crop: :fill %>
-          <% end %>
-          <%= link_to cocktail.name, cocktail_path(cocktail) %>
-        </li>
+    <div class="text-center mb-4">
+      <h2>Menu</h2>
+    </div>
+    <div class="ml-4 mr-4">
+        <% if @cocktails.any? %>
+          <ul class="list-group list-group-flush">
+            <% @cocktails.each do |cocktail| %>
+              <li class="list-group-item" id="cocktails-list">
+                <%= link_to cocktail.name, cocktail_path(cocktail), class: 'badge badge-primary badge-pill', id: 'cocktail-badges' %>
+              <small><%= "⭐" * rand(1..5) %></small>
+              </li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p class="empty-state text-center">You don't have any cocktails yet.<br>
+          🎉 Let's get the party started 🎉</p>
         <% end %>
-    </ul>
-  <% else %>
-    <p class="empty-state text-center">You don't have any cocktails yet.<br>
-    🎉 Let's get the party started 🎉</p>
-  <% end %>
-</div>
+    </div>

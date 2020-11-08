@@ -9,56 +9,58 @@
 <% end %>
 
 <div class="m-4 text-center">
-  <% if @cocktail.photo.attached? %>
-    <%= cl_image_tag @cocktail.photo.key, height: 300, width: 400, crop: :fill %>
-  <% end %>
-    <h2><%= @cocktail.name %>🍹</h2>
+  <h2><%= @cocktail.name %>🍹</h2>
+  <div class="text-left">
+    <small><%= link_to cocktails_path do %>
+      &larr; Back to Menu
+    <% end %></small>
+  </div>
 </div>
 
-<div class="ml-4 mr-4">
-  <div class="m-4">
-    <%= link_to cocktails_path do %>
-      &larr; Back to list
-    <% end %>
-  </div>
+<div class="main-content">
+  <% if @cocktail.photo.attached? %>
+    <%= cl_image_tag @cocktail.photo.key, height: 300, width: 300, crop: :fill, id: 'cocktail-profile' %>
+  <% end %>
 
-  <div class="m-4">
-    <h4>Ingredients:</h4>
+  <div class="ml-4 mr-4">
+    <div class="m-4">
+      <h6>Ingredients:</h6>
 
-    <% if alert.present? %>
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <%= alert.html_safe %>
+      <% if alert.present? %>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <%= alert.html_safe %>
 
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-    <% end %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <% end %>
 
-    <% if @cocktail.doses.any? %>
-      <ul>
-        <% @cocktail.doses.each do |dose| %>
-          <li>
-            <%= dose.description %> <%= dose.ingredient.name %>
-            <%= link_to dose_path(dose), method: :delete,
-              data: { confirm: 'Really?!', toggle: 'tooltip', placement: 'top' },
-              title: 'Delete ingredient',
-              class: 'text-danger' do %>
-              <small><i class="fa fa-trash"></i></small>
-            <% end %>
-          </li>
-        <% end %>
-      </ul>
-    <% else %>
-      <p class="empty-state mt-2">
-        You don't have any ingredients yet.
-      </p>
-    <% end %>
-  </div>
+      <% if @cocktail.doses.any? %>
+        <ul>
+          <% @cocktail.doses.each do |dose| %>
+            <li class="badge badge-primary badge-pill">
+              <%= dose.ingredient.name %> (<%= dose.description %>)
+              <%= link_to dose_path(dose), method: :delete,
+                data: { confirm: 'Are you sure you want to remove this ingredient?', toggle: 'tooltip', placement: 'top' },
+                title: 'Delete ingredient',
+                class: 'text-white ml-1' do %>
+                <small><i class="fas fa-times"></i></small>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <small><p class="empty-state mt-2">
+          You don't have any ingredients yet.
+        </p></small>
+      <% end %>
+    </div>
 
-  <div class="m-4">
-    <%= link_to new_cocktail_dose_path(@cocktail), class: 'btn btn-sm btn-outline-secondary' do %>
-      <i class="fa fa-plus mr-2"></i> Add ingredient dose
-    <% end %>
+    <div class="m-4 text-center">
+      <%= link_to new_cocktail_dose_path(@cocktail), class: 'btn btn-sm btn-outline-secondary' do %>
+        <i class="fa fa-plus mr-2"></i> New ingredient
+      <% end %>
+    </div>
   </div>
 </div>

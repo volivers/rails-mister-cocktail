@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsMisterCocktail</title>
+    <title>Mr. Cocktail</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍸</text></svg>">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,10 +14,19 @@
   <body>
   <nav class="navbar navbar-light bg-light">
     <strong><%= link_to 'Mr. Cocktail 🍸', cocktails_path, class: 'navbar-brand ml-4' %></strong>
-    <%= link_to new_cocktail_path, class: 'btn btn btn-outline-primary mr-4' do %>
-        <i class="fa fa-plus mr-2"></i> Add cocktail
-  <% end %>
+    <%= link_to new_cocktail_path, class: 'btn btn btn-primary mr-4' do %>
+        New recipe
+    <% end %>
   </nav>
-    <%= yield %>
+  <div class="banner">
+    <div class="round-container">
+      <%= yield %>
+    </div>
+  </div>
+  <footer class="page-footer font-small blue bg-light">
+    <div class="footer-copyright text-center py-3"><small>© 2020 Copyright:
+      <a href="https://www.linkedin.com/in/volivers/"> Vasco Oliveira</a></small>
+    </div>
+  </footer>
   </body>
 </html>
